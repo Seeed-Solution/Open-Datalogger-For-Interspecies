@@ -1,0 +1,55 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/Seeed-Solution/AI-in-the-wild/schemas/animal-individual.schema.json",
+  "title": "Animal Individual",
+  "type": "object",
+  "required": ["individual_id", "species"],
+  "properties": {
+    "individual_id": {
+      "type": "string"
+    },
+    "species": {
+      "type": "string"
+    },
+    "sex": {
+      "type": "string",
+      "enum": ["female", "male", "unknown", "not_applicable"]
+    },
+    "estimated_birth_date": {
+      "type": "string",
+      "format": "date"
+    },
+    "identification_methods": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "enum": ["natural_markings", "tag", "band", "collar", "pit_tag", "genetic", "human_expert", "model_assisted", "other"]
+      }
+    },
+    "known_aliases": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "life_history": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["event_type", "event_date"],
+        "properties": {
+          "event_type": { "type": "string" },
+          "event_date": { "type": "string", "format": "date" },
+          "observation_id": { "type": "string" },
+          "notes": { "type": "string" }
+        },
+        "additionalProperties": false
+      }
+    },
+    "sensitivity_level": {
+      "type": "string",
+      "enum": ["public", "delayed", "generalized", "controlled", "restricted"],
+      "default": "controlled"
+    }
+  },
+  "additionalProperties": false
+}
+

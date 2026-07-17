@@ -1,0 +1,50 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/Seeed-Solution/AI-in-the-wild/schemas/device-metadata.schema.json",
+  "title": "Device Metadata",
+  "type": "object",
+  "required": ["device_id", "device_type"],
+  "properties": {
+    "device_id": {
+      "type": "string"
+    },
+    "device_type": {
+      "type": "string",
+      "enum": ["camera", "acoustic", "tracker", "environmental", "edge_gateway", "other"]
+    },
+    "manufacturer": {
+      "type": "string"
+    },
+    "model": {
+      "type": "string"
+    },
+    "firmware_version": {
+      "type": "string"
+    },
+    "sensor_configuration": {
+      "type": "object",
+      "additionalProperties": true
+    },
+    "power_source": {
+      "type": "string"
+    },
+    "storage": {
+      "type": "string"
+    },
+    "connectivity": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "enum": ["none", "sd_card", "wifi", "cellular", "lora", "ble", "satellite", "ethernet", "other"]
+      }
+    },
+    "time_sync_method": {
+      "type": "string"
+    },
+    "notes": {
+      "type": "string"
+    }
+  },
+  "additionalProperties": false
+}
+

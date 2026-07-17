@@ -1,0 +1,57 @@
+name: Research proposal
+description: Propose a wildlife research question for AI in the Wild.
+title: "[Research]: "
+labels: ["research", "proposal"]
+body:
+  - type: textarea
+    id: question
+    attributes:
+      label: Research question
+      description: What ecological or conservation question are you trying to answer?
+    validations:
+      required: true
+  - type: input
+    id: species
+    attributes:
+      label: Species or taxonomic group
+      placeholder: e.g. Asian elephant, bats, migratory birds
+    validations:
+      required: true
+  - type: dropdown
+    id: theme
+    attributes:
+      label: Research theme
+      options:
+        - Individual identification and lifetime tracking
+        - Acoustic monitoring and stress signals
+        - Population monitoring
+        - Social behavior networks
+        - Habitat health and carrying capacity
+        - Cognitive aging and behavioral change
+        - Cross-theme
+    validations:
+      required: true
+  - type: textarea
+    id: data
+    attributes:
+      label: Available or expected data
+      description: Describe images, video, audio, tracking, environmental data, or field notes.
+  - type: dropdown
+    id: sensitivity
+    attributes:
+      label: Data sensitivity
+      options:
+        - Public
+        - Delayed
+        - Generalized
+        - Controlled
+        - Restricted
+        - Unknown
+    validations:
+      required: true
+  - type: textarea
+    id: help
+    attributes:
+      label: What help is needed?
+      description: Field devices, data schema, model baseline, annotation workflow, deployment plan, or other support.
+

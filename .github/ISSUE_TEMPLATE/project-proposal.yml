@@ -1,0 +1,38 @@
+name: Project proposal
+description: Propose a concrete field or dataset project.
+title: "[Project]: "
+labels: ["project", "proposal"]
+body:
+  - type: input
+    id: project_name
+    attributes:
+      label: Project name
+    validations:
+      required: true
+  - type: textarea
+    id: summary
+    attributes:
+      label: Summary
+      description: One or two paragraphs describing the project.
+    validations:
+      required: true
+  - type: input
+    id: owner
+    attributes:
+      label: Field owner or organization
+  - type: textarea
+    id: methods
+    attributes:
+      label: Methods and devices
+      description: What devices, data sources, and analysis steps are expected?
+  - type: textarea
+    id: outputs
+    attributes:
+      label: Expected outputs
+      description: Research outputs, datasets, workflows, software, or conservation decisions.
+  - type: textarea
+    id: risks
+    attributes:
+      label: Risks and constraints
+      description: Sensitive species, location, permits, field logistics, or animal welfare concerns.
+

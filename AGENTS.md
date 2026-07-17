@@ -1,0 +1,47 @@
+# AI in the Wild
+
+## 项目简介
+
+AI in the Wild 是一个将人工智能、野外传感器和边缘计算应用于野生动物研究与保护的开源计划。第一阶段重点是建立文档驱动、项目驱动的开源研究体系，而不是立即沉淀重模型代码。
+
+## 技术栈
+
+- 文档：Markdown
+- 数据规范：JSON Schema
+- 协作平台：GitHub Issues / Pull Requests / Actions
+- 未来可能扩展：Python、边缘 AI、计算机视觉、生物声学、时间序列分析、LLM 辅助研究分析
+
+## 目录结构
+
+- `docs/`：愿景、架构、野外部署、数据治理、研究主题、硬件和 AI 能力说明
+- `projects/`：项目入口、项目模板和后续示例
+- `reference-implementations/`：未来参考实现占位
+- `schemas/`：通用野外研究数据 JSON Schema
+- `.github/`：Issue 模板、PR 模板和文档检查
+- `docs/sessions/`：跨会话日志
+
+## 当前状态
+
+### 活跃分支
+
+| 分支 | 任务 |
+|---|---|
+| `feature/initial-open-framework` | 搭建第一版开源研究体系仓库骨架 |
+
+### 已完成功能
+
+- 第一版仓库结构规划中
+
+## 重要约定
+
+- 第一阶段以文档、模板、数据规范和项目治理为主，避免过早加入重模型代码。
+- 新研究项目应先使用 `projects/project-template/` 或 GitHub project proposal issue 描述清楚。
+- 物种位置、繁殖点、濒危动物、未公开数据等信息默认按敏感数据处理。
+- Reference implementations 只有在真实项目验证后再加入。
+
+## 变更日志
+
+| 日期 | 分支 | 说明 |
+|---|---|---|
+| 2026-07-17 | `feature/initial-open-framework` | 初始化开源研究体系仓库骨架 |
+

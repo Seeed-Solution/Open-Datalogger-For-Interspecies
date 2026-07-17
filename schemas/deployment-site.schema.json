@@ -1,0 +1,43 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/Seeed-Solution/AI-in-the-wild/schemas/deployment-site.schema.json",
+  "title": "Deployment Site",
+  "type": "object",
+  "required": ["site_id", "site_name", "sensitivity_level"],
+  "properties": {
+    "site_id": {
+      "type": "string"
+    },
+    "site_name": {
+      "type": "string"
+    },
+    "region": {
+      "type": "string"
+    },
+    "habitat_type": {
+      "type": "string"
+    },
+    "location": {
+      "type": "object",
+      "properties": {
+        "latitude": { "type": "number", "minimum": -90, "maximum": 90 },
+        "longitude": { "type": "number", "minimum": -180, "maximum": 180 },
+        "precision_m": { "type": "number", "minimum": 0 },
+        "generalized": { "type": "boolean", "default": true }
+      },
+      "additionalProperties": false
+    },
+    "sensitivity_level": {
+      "type": "string",
+      "enum": ["public", "delayed", "generalized", "controlled", "restricted"]
+    },
+    "access_notes": {
+      "type": "string"
+    },
+    "environment_notes": {
+      "type": "string"
+    }
+  },
+  "additionalProperties": false
+}
+

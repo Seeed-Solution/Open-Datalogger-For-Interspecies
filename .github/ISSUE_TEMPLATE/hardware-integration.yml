@@ -1,0 +1,39 @@
+name: Hardware integration
+description: Propose or document a device integration.
+title: "[Hardware]: "
+labels: ["hardware"]
+body:
+  - type: input
+    id: device
+    attributes:
+      label: Device or sensor
+      placeholder: e.g. reCamera, XIAO ESP32S3 Sense, LoRa tracker
+    validations:
+      required: true
+  - type: dropdown
+    id: device_type
+    attributes:
+      label: Device type
+      options:
+        - Camera
+        - Acoustic
+        - Tracker
+        - Environmental
+        - Edge gateway
+        - Other
+    validations:
+      required: true
+  - type: textarea
+    id: use_case
+    attributes:
+      label: Wildlife research use case
+  - type: textarea
+    id: constraints
+    attributes:
+      label: Field constraints
+      description: Power, weather, connectivity, storage, mounting, maintenance, or sensitivity constraints.
+  - type: textarea
+    id: metadata
+    attributes:
+      label: Metadata or schema needs
+

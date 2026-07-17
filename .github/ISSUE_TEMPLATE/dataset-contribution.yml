@@ -1,0 +1,52 @@
+name: Dataset contribution
+description: Propose a dataset, metadata format, or annotation set.
+title: "[Dataset]: "
+labels: ["dataset"]
+body:
+  - type: textarea
+    id: description
+    attributes:
+      label: Dataset description
+    validations:
+      required: true
+  - type: input
+    id: owner
+    attributes:
+      label: Dataset owner
+  - type: dropdown
+    id: data_type
+    attributes:
+      label: Data type
+      options:
+        - Image
+        - Video
+        - Audio
+        - Tracking
+        - Environmental
+        - Manual survey
+        - Multimodal
+    validations:
+      required: true
+  - type: dropdown
+    id: access
+    attributes:
+      label: Proposed access level
+      options:
+        - Public
+        - Delayed
+        - Generalized
+        - Controlled
+        - Restricted
+        - Unknown
+    validations:
+      required: true
+  - type: textarea
+    id: governance
+    attributes:
+      label: Governance notes
+      description: Licensing, permits, sensitive fields, location masking, or review requirements.
+  - type: textarea
+    id: annotations
+    attributes:
+      label: Annotation details
+

@@ -1,0 +1,25 @@
+name: Markdown and JSON checks
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Validate JSON
+        run: |
+          python -m json.tool schemas/observation.schema.json >/dev/null
+          python -m json.tool schemas/animal-individual.schema.json >/dev/null
+          python -m json.tool schemas/device-metadata.schema.json >/dev/null
+          python -m json.tool schemas/deployment-site.schema.json >/dev/null
+
+      - name: List Markdown files
+        run: find . -name "*.md" -print
+

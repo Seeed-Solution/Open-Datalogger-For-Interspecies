@@ -1,0 +1,11 @@
+cff-version: 1.2.0
+title: AI in the Wild
+message: "If you use this repository in your research, please cite it."
+type: software
+authors:
+  - name: Seeed Solution
+repository-code: "https://github.com/Seeed-Solution/AI-in-the-wild"
+abstract: "An open-source initiative applying AI, sensing, and edge computing to wildlife research and conservation."
+license: MIT
+date-released: 2026-07-17
+

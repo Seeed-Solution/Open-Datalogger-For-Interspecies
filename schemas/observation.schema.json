@@ -1,0 +1,80 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/Seeed-Solution/AI-in-the-wild/schemas/observation.schema.json",
+  "title": "Observation",
+  "type": "object",
+  "required": ["observation_id", "observed_at", "source_type", "site_id"],
+  "properties": {
+    "observation_id": {
+      "type": "string",
+      "description": "Stable identifier for this observation."
+    },
+    "observed_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Timestamp when the observation occurred."
+    },
+    "source_type": {
+      "type": "string",
+      "enum": ["image", "video", "audio", "tracking", "environmental", "manual", "multimodal"]
+    },
+    "site_id": {
+      "type": "string"
+    },
+    "device_id": {
+      "type": "string"
+    },
+    "species": {
+      "type": "string"
+    },
+    "individual_id": {
+      "type": "string"
+    },
+    "media_uri": {
+      "type": "string",
+      "description": "URI or relative path for associated media when available."
+    },
+    "location": {
+      "type": "object",
+      "properties": {
+        "latitude": { "type": "number", "minimum": -90, "maximum": 90 },
+        "longitude": { "type": "number", "minimum": -180, "maximum": 180 },
+        "precision_m": { "type": "number", "minimum": 0 },
+        "generalized": { "type": "boolean", "default": false }
+      },
+      "additionalProperties": false
+    },
+    "labels": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "model_outputs": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["model_name", "model_version", "label"],
+        "properties": {
+          "model_name": { "type": "string" },
+          "model_version": { "type": "string" },
+          "label": { "type": "string" },
+          "confidence": { "type": "number", "minimum": 0, "maximum": 1 },
+          "review_status": {
+            "type": "string",
+            "enum": ["unreviewed", "accepted", "rejected", "needs_review"]
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "sensitivity_level": {
+      "type": "string",
+      "enum": ["public", "delayed", "generalized", "controlled", "restricted"],
+      "default": "controlled"
+    },
+    "notes": {
+      "type": "string"
+    }
+  },
+  "additionalProperties": false
+}
+
