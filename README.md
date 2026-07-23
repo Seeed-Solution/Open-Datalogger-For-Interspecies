@@ -1,4 +1,4 @@
-# AI in the Wild
+# Open Datalogger For Interspecies
 
 An open-source initiative applying AI, sensing, and edge computing to wildlife research and conservation.
 
@@ -8,7 +8,7 @@ An open-source initiative applying AI, sensing, and edge computing to wildlife r
 
 Wildlife researchers collect images, video, audio, tracking signals, and environmental measurements in difficult field conditions. Much of this work still depends on manual observation, fragmented tools, and project-specific data formats.
 
-AI in the Wild aims to connect real field research questions with reusable open-source AI, sensing, and edge computing patterns. The first stage of this repository is intentionally documentation-driven: define the research themes, contribution model, data schemas, and project templates before adding heavier software modules.
+Open Datalogger For Interspecies aims to connect real field research questions with reusable open-source AI, sensing, and edge computing patterns. The first stage of this repository is intentionally documentation-driven: define the research themes, contribution model, data schemas, and project templates before adding heavier software modules.
 
 ## Research Themes
 
