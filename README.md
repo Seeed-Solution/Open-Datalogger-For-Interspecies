@@ -10,6 +10,20 @@ Wildlife researchers collect images, video, audio, tracking signals, and environ
 
 Open Datalogger For Interspecies aims to connect real field research questions with reusable open-source AI, sensing, and edge computing patterns. The first stage of this repository is intentionally documentation-driven: define the research themes, contribution model, data schemas, and project templates before adding heavier software modules.
 
+## Featured Pilot Demo: Edge AI Camera to Meshtastic Alert
+
+[![Wio Tracker L1 Pro receiving Cat detected over Meshtastic](projects/edge-ai-camera-meshtastic-alert/media/home-demo-alert.jpg)](projects/edge-ai-camera-meshtastic-alert/)
+
+A reCamera Pro detects a stray cat as a safe proxy target, triggers a GPIO pulse, and sends a `Cat detected` alert through a Meshtastic network to a Wio Tracker L1 Pro receiver.
+
+This validates a field workflow that can later be adapted for wildlife or risk-event alerts, such as tiger, wolf, livestock-conflict, or potential poacher detection. It is a pilot workflow demo, not a claim that a production wildlife detector is complete.
+
+| Start Here | Purpose |
+|---|---|
+| [Read the full demo guide](projects/edge-ai-camera-meshtastic-alert/) | One-page project story, hardware list, wiring, Meshtastic setup, reCamera setup, runtime evidence, and limitations |
+| [Use the reference implementation](reference-implementations/recamera-meshtastic-trigger/) | Camera-side trigger scripts, runtime logger, snapshot tools, and Meshtastic node setup notes |
+| [View hardware and setup images](projects/edge-ai-camera-meshtastic-alert/#hardware) | Photos of the deployment, wiring, power setup, receiver alert, and configuration screens |
+
 ## Research Themes
 
 | Theme | Core Question | AI Capabilities |
@@ -44,19 +58,13 @@ Research projects
 
 See [System Architecture](docs/system-architecture.md) for the intended structure.
 
-## Featured Demo
-
-| Demo | What It Shows | Status |
-|---|---|---|
-| [Edge AI Camera to Meshtastic Alert](projects/edge-ai-camera-meshtastic-alert/) | A reCamera Pro detects a proxy target, saves a trigger snapshot, outputs a GPIO pulse, and sends an alert through a Meshtastic network to a Wio Tracker L1 Pro receiver. | Pilot validated |
-
-This first demo uses stray cats around an office as a safe proxy target to validate the alert chain. It is a workflow demonstration, not a claim that a production tiger or wolf model is complete.
-
 ## Repository Map
 
 | Path | Purpose |
 |---|---|
 | `docs/` | Vision, architecture, field deployment, data governance, research themes, hardware notes, and AI capability notes |
+| [`projects/edge-ai-camera-meshtastic-alert/`](projects/edge-ai-camera-meshtastic-alert/) | First pilot demo: edge AI camera detection to Meshtastic alert |
+| [`reference-implementations/recamera-meshtastic-trigger/`](reference-implementations/recamera-meshtastic-trigger/) | Reusable scripts and setup notes for the first pilot demo |
 | `projects/` | Project proposal guidance, reusable project template, and pilot examples |
 | `reference-implementations/` | Lightweight reusable code modules validated by pilot projects |
 | `schemas/` | JSON Schemas for common wildlife research records |
