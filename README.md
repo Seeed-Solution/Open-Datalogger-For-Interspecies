@@ -44,13 +44,21 @@ Research projects
 
 See [System Architecture](docs/system-architecture.md) for the intended structure.
 
+## Featured Demo
+
+| Demo | What It Shows | Status |
+|---|---|---|
+| [Edge AI Camera to Meshtastic Alert](projects/edge-ai-camera-meshtastic-alert/) | A reCamera Pro detects a proxy target, saves a trigger snapshot, outputs a GPIO pulse, and sends an alert through a Meshtastic network to a Wio Tracker L1 Pro receiver. | Pilot validated |
+
+This first demo uses stray cats around an office as a safe proxy target to validate the alert chain. It is a workflow demonstration, not a claim that a production tiger or wolf model is complete.
+
 ## Repository Map
 
 | Path | Purpose |
 |---|---|
 | `docs/` | Vision, architecture, field deployment, data governance, research themes, hardware notes, and AI capability notes |
-| `projects/` | Project proposal guidance, reusable project template, and future examples |
-| `reference-implementations/` | Lightweight placeholders for future reusable code modules |
+| `projects/` | Project proposal guidance, reusable project template, and pilot examples |
+| `reference-implementations/` | Lightweight reusable code modules validated by pilot projects |
 | `schemas/` | JSON Schemas for common wildlife research records |
 | `.github/` | Issue templates, pull request template, and documentation checks |
 
@@ -71,4 +79,3 @@ This repository is in the foundation stage. We are defining shared language, pro
 ## Citation
 
 If this initiative helps your research, please cite the repository using [CITATION.cff](CITATION.cff).
-

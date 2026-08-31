@@ -27,13 +27,21 @@
 
 “繁殖”可以作为跨主题标签处理：个体识别记录繁殖史，种群监测计算幼体比例，社交网络分析亲缘和配偶关系，栖息地研究环境对繁殖成功率的影响。
 
+## 示例 Demo
+
+| Demo | 展示内容 | 状态 |
+|---|---|---|
+| [边缘 AI 摄像头到 Meshtastic 告警](projects/edge-ai-camera-meshtastic-alert/README.zh-CN.md) | reCamera Pro 识别代理目标，保存触发照片，输出 GPIO 脉冲，并通过 Meshtastic 网络把告警发送到 Wio Tracker L1 Pro 接收节点。 | 链路已验证 |
+
+这个第一个 demo 使用公司附近出现的野猫作为低风险代理目标，用来验证“边缘识别 -> 本地触发 -> 离线网络告警 -> 接收节点提示”的完整链路。它是一个工作流验证，不代表已经完成可直接用于野外的老虎或狼识别模型。
+
 ## 仓库结构
 
 | 路径 | 用途 |
 |---|---|
 | `docs/` | 愿景、系统架构、野外部署、数据治理、研究主题、硬件和 AI 能力说明 |
-| `projects/` | 项目提案说明、项目模板和未来示例 |
-| `reference-implementations/` | 未来可复用代码模块的轻量占位 |
+| `projects/` | 项目提案说明、项目模板和试点示例 |
+| `reference-implementations/` | 经过试点验证后沉淀的轻量参考实现 |
 | `schemas/` | 野外研究通用记录的 JSON Schema |
 | `.github/` | Issue 模板、PR 模板和文档检查 |
 
@@ -46,4 +54,3 @@
 - 等代码在真实项目里验证后，再沉淀为 reference implementation。
 
 请先阅读 [CONTRIBUTING.md](CONTRIBUTING.md) 和 [RESPONSIBLE_RESEARCH.md](RESPONSIBLE_RESEARCH.md)。
-

@@ -26,11 +26,12 @@ AI in the Wild 是一个将人工智能、野外传感器和边缘计算应用�
 
 | 分支 | 任务 |
 |---|---|
-| 暂无 | - |
+| `dev` | 整理 reCamera Pro + Meshtastic 第一个链路验证 demo 的公开表达和目录框架 |
 
 ### 已完成功能
 
 - 第一版开源研究体系仓库骨架：双语 README、治理文档、六个研究主题、项目模板、JSON Schema、GitHub 协作模板和基础检查工作流。
+- `dev` 分支新增第一个试点 demo 框架：用公司野猫作为代理目标，验证 reCamera Pro 边缘识别、GPIO 触发、Meshtastic 告警和 Wio Tracker L1 Pro 接收链路。
 
 ## 重要约定
 
@@ -45,3 +46,4 @@ AI in the Wild 是一个将人工智能、野外传感器和边缘计算应用�
 |---|---|---|
 | 2026-07-17 | `feature/initial-open-framework` | 初始化开源研究体系仓库骨架 |
 | 2026-07-17 | `main` | 合并第一版开源研究体系仓库骨架 |
+| 2026-08-31 | `dev` | 新增 reCamera Pro + Meshtastic 链路验证 demo 的项目页和参考实现入口 |
