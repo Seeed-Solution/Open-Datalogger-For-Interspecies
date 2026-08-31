@@ -4,6 +4,14 @@ This directory contains the reusable files behind the [Edge AI Camera to Meshtas
 
 The project page is the best place to understand the demo story and hardware chain. This directory is for people who want to reproduce or adapt the implementation.
 
+![Wio Tracker L1 Pro receiving Cat detected over Meshtastic](../../projects/edge-ai-camera-meshtastic-alert/media/mesh-notice.jpg)
+
+## Demo Snapshot
+
+The validated demo connects a reCamera Pro to a Wio SX1262 with XIAO ESP32S3 transmitter node. When the camera detects the target class, the transmitter sends a Meshtastic alert that can be received by a Wio Tracker L1 Pro.
+
+![Wiring between reCamera Pro and the Meshtastic transmitter node](../../projects/edge-ai-camera-meshtastic-alert/media/wiring.jpg)
+
 ## Directory Map
 
 ```text
@@ -33,6 +41,8 @@ reCamera Pro inference stream
 -> Wio Tracker L1 Pro receives the message
 ```
 
+![reCamera runtime dashboard](../../projects/edge-ai-camera-meshtastic-alert/media/run-report.jpg)
+
 ## Camera Pin
 
 | Signal | Value |
@@ -44,6 +54,16 @@ reCamera Pro inference stream
 | Cooldown | 60 seconds |
 
 When this pin is used as GPIO, do not use it as a CAN signal at the same time.
+
+## Meshtastic Configuration
+
+The transmitter node uses Meshtastic's Detection Sensor module. The channel key must be shared between nodes, but it should be redacted in public screenshots.
+
+![Meshtastic channel configuration with redacted key](../../projects/edge-ai-camera-meshtastic-alert/media/mesh-channel-configuration.png)
+
+The monitor pin is the transmitter-side GPIO connected to reCamera GPIO188, and the trigger type is `LOGIC_HIGH`.
+
+![Meshtastic Detection Sensor module configuration](../../projects/edge-ai-camera-meshtastic-alert/media/mesh-detection-sensor-configuration.png)
 
 ## Quick Start
 
@@ -64,4 +84,3 @@ See:
 - Do not commit SSH passwords, API tokens, Meshtastic channel keys, or private GPS locations.
 - Redact Meshtastic pre-shared keys from screenshots before publishing.
 - Do not publish sensitive wildlife locations or unreviewed human images.
-
