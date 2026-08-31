@@ -20,5 +20,10 @@ Before adding code here, confirm that:
 - `environmental-monitoring/`
 - `edge-data-pipeline/`
 
-For now these directories contain placeholders to make the intended structure visible without implying mature code exists.
+## Pilot-Validated Entries
 
+| Implementation | Related Project | Status |
+|---|---|---|
+| [reCamera + Meshtastic Trigger](recamera-meshtastic-trigger/) | [Edge AI Camera to Meshtastic Alert](../projects/edge-ai-camera-meshtastic-alert/) | Documentation first pass |
+
+The planned-area directories remain placeholders until a specific project validates reusable code for that area.

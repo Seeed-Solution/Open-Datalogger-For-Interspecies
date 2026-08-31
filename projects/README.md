@@ -20,5 +20,4 @@ Use `projects/project-template/` or the GitHub project proposal issue template. 
 
 | Project | Theme | Species | Site | Stage |
 |---|---|---|---|---|
-| None yet | - | - | - | Proposal wanted |
-
+| [Edge AI Camera to Meshtastic Alert](edge-ai-camera-meshtastic-alert/) | Population Monitoring / Field Alerting | Stray cat as proxy target | Office pilot | Pilot validated |

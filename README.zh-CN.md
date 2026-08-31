@@ -14,6 +14,20 @@
 
 第一阶段以文档、模板和数据规范为主。等具体课题和成熟代码出现后，再逐步沉淀成可复用模块。
 
+## 示例 Demo：边缘 AI 摄像头到 Meshtastic 告警
+
+[![Wio Tracker L1 Pro 通过 Meshtastic 收到 Cat detected 告警](projects/edge-ai-camera-meshtastic-alert/media/home-demo-alert.jpg)](projects/edge-ai-camera-meshtastic-alert/README.zh-CN.md)
+
+reCamera Pro 识别公司附近出现的野猫，输出 GPIO 脉冲，再通过 Meshtastic 网络把 `Cat detected` 告警发送到 Wio Tracker L1 Pro 接收节点。
+
+这里的野猫是一个安全、容易复现的代理目标，用来模拟野外老虎、狼、人兽冲突或疑似偷猎者出现时的告警链路。它是链路验证 demo，不代表已经完成生产级野生动物识别模型。
+
+| 从这里开始 | 内容 |
+|---|---|
+| [阅读完整 demo 介绍](projects/edge-ai-camera-meshtastic-alert/README.zh-CN.md) | 一整篇项目说明，包含设备、接线、Meshtastic 配置、reCamera 程序逻辑、运行结果和限制 |
+| [查看参考实现代码](reference-implementations/recamera-meshtastic-trigger/) | 相机侧触发脚本、运行日志、抓拍工具和 Meshtastic 节点设置说明 |
+| [查看硬件和配置图片](projects/edge-ai-camera-meshtastic-alert/README.zh-CN.md#当前试点场景) | 部署、接线、供电、接收告警和配置界面截图 |
+
 ## 六个研究方向
 
 | 方向 | 核心问题 | AI 能力 |
@@ -32,8 +46,10 @@
 | 路径 | 用途 |
 |---|---|
 | `docs/` | 愿景、系统架构、野外部署、数据治理、研究主题、硬件和 AI 能力说明 |
-| `projects/` | 项目提案说明、项目模板和未来示例 |
-| `reference-implementations/` | 未来可复用代码模块的轻量占位 |
+| [`projects/edge-ai-camera-meshtastic-alert/`](projects/edge-ai-camera-meshtastic-alert/README.zh-CN.md) | 第一个试点 demo：边缘 AI 摄像头识别到 Meshtastic 告警 |
+| [`reference-implementations/recamera-meshtastic-trigger/`](reference-implementations/recamera-meshtastic-trigger/) | 第一个试点 demo 的可复用脚本和设置说明 |
+| `projects/` | 项目提案说明、项目模板和试点示例 |
+| `reference-implementations/` | 经过试点验证后沉淀的轻量参考实现 |
 | `schemas/` | 野外研究通用记录的 JSON Schema |
 | `.github/` | Issue 模板、PR 模板和文档检查 |
 
@@ -46,4 +62,3 @@
 - 等代码在真实项目里验证后，再沉淀为 reference implementation。
 
 请先阅读 [CONTRIBUTING.md](CONTRIBUTING.md) 和 [RESPONSIBLE_RESEARCH.md](RESPONSIBLE_RESEARCH.md)。
-

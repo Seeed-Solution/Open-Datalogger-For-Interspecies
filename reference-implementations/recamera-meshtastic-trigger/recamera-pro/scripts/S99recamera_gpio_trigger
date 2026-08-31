@@ -1,0 +1,81 @@
+#!/bin/sh
+
+NAME=recamera_gpio_trigger
+SCRIPT=/userdata/person_gpio_trigger.py
+CONFIG=/userdata/recamera_trigger.conf
+LOGFILE=/userdata/recamera_gpio_trigger.log
+PIDFILE=/var/run/recamera_gpio_trigger.pid
+
+get_config_value() {
+    key="$1"
+    default="$2"
+    if [ -f "$CONFIG" ]; then
+        value=$(grep "^${key}=" "$CONFIG" | tail -n 1 | cut -d= -f2-)
+    fi
+    if [ -z "$value" ]; then
+        value="$default"
+    fi
+    echo "$value"
+}
+
+prepare_gpio() {
+    gpio=$(get_config_value GPIO 188)
+    gpio_path=/sys/class/gpio/gpio${gpio}
+
+    if [ ! -d "$gpio_path" ]; then
+        echo "$gpio" > /sys/class/gpio/export 2>/dev/null || true
+        sleep 0.2
+    fi
+
+    if [ -d "$gpio_path" ]; then
+        echo out > "$gpio_path/direction" 2>/dev/null || true
+        echo 0 > "$gpio_path/value" 2>/dev/null || true
+    fi
+}
+
+start_service() {
+    prepare_gpio
+    if [ -f "$PIDFILE" ] && kill -0 "$(cat "$PIDFILE")" 2>/dev/null; then
+        echo "$NAME already running"
+        exit 0
+    fi
+    RECAMERA_TRIGGER_CONFIG="$CONFIG" nohup python3 -u "$SCRIPT" >> "$LOGFILE" 2>&1 &
+    echo $! > "$PIDFILE"
+    echo "$NAME started, pid=$(cat "$PIDFILE")"
+}
+
+stop_service() {
+    if [ -f "$PIDFILE" ]; then
+        kill "$(cat "$PIDFILE")" 2>/dev/null || true
+        rm -f "$PIDFILE"
+    fi
+    prepare_gpio
+    echo "$NAME stopped"
+}
+
+case "$1" in
+    start)
+        start_service
+        ;;
+    stop)
+        stop_service
+        ;;
+    restart|reload)
+        stop_service
+        start_service
+        ;;
+    status)
+        if [ -f "$PIDFILE" ] && kill -0 "$(cat "$PIDFILE")" 2>/dev/null; then
+            echo "$NAME running, pid=$(cat "$PIDFILE")"
+        else
+            echo "$NAME stopped"
+            exit 1
+        fi
+        ;;
+    *)
+        echo "Usage: $0 {start|stop|restart|status}"
+        exit 1
+        ;;
+esac
+
+exit 0
