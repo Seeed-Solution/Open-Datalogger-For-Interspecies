@@ -1,12 +1,27 @@
 # reCamera + Meshtastic Trigger Reference
 
-This reference implementation turns edge AI inference on a reCamera Pro into a simple hardware trigger that can be consumed by a Meshtastic node.
+This directory contains the reusable files behind the [Edge AI Camera to Meshtastic Alert Demo](../../projects/edge-ai-camera-meshtastic-alert/).
 
-It supports the first demo project:
+The project page is the best place to understand the demo story and hardware chain. This directory is for people who want to reproduce or adapt the implementation.
 
-- [Edge AI Camera to Meshtastic Alert Demo](../../projects/edge-ai-camera-meshtastic-alert/)
+## Directory Map
 
-## Current Behavior
+```text
+recamera-pro/
+  scripts/          camera-side GPIO trigger service
+  runtime-logger/   optional runtime/event logger
+  docs/             camera-side wiring and troubleshooting notes
+
+meshtastic-node/
+  README.md         firmware and Detection Sensor setup notes
+
+tools/
+  download_snapshots.py
+  generate_runtime_dashboard.py
+  export_runtime_report.py
+```
+
+## Validated Behavior
 
 ```text
 reCamera Pro inference stream
@@ -14,21 +29,11 @@ reCamera Pro inference stream
 -> output GPIO188 high for 3 seconds
 -> keep a 60-second cooldown
 -> save a trigger snapshot
--> external Meshtastic node sends the alert
+-> Meshtastic transmitter sends an alert
+-> Wio Tracker L1 Pro receives the message
 ```
 
-## Hardware Roles
-
-| Device | Role |
-|---|---|
-| reCamera Pro | Runs edge AI detection and controls GPIO |
-| Meshtastic transmitter node | Reads the GPIO trigger and sends a radio alert |
-| Wio Tracker L1 Pro | Receives the Meshtastic alert |
-| Optional ESP32-class bridge | Can be used when custom signal conditioning or message formatting is needed |
-
-## Camera Output
-
-The validated camera-side trigger pin is:
+## Camera Pin
 
 | Signal | Value |
 |---|---|
@@ -38,54 +43,25 @@ The validated camera-side trigger pin is:
 | Pulse | 3 seconds |
 | Cooldown | 60 seconds |
 
-When this pin is used as GPIO, it should not be used as a CAN bus signal at the same time.
+When this pin is used as GPIO, do not use it as a CAN signal at the same time.
 
-## Files to Add
+## Quick Start
 
-The implementation files should be promoted here from the validated reCamera Pro handoff package:
+1. Flash Meshtastic firmware to the transmitter and receiver nodes.
+2. Configure the transmitter Detection Sensor module to monitor the pin wired to reCamera GPIO188.
+3. Copy `recamera-pro/scripts/` to the reCamera Pro.
+4. Edit `recamera_trigger.conf`.
+5. Run `install.sh` on the reCamera Pro.
+6. Confirm that the receiver displays `Cat detected` when the camera sees the target.
 
-```text
-scripts/
-  person_gpio_trigger.py
-  recamera_trigger.conf
-  S99recamera_gpio_trigger
-  install.sh
-  uninstall.sh
-  download_snapshots.py
+See:
 
-docs/
-  wiring.md
-  troubleshooting.md
-  trigger-snapshots.md
-```
+- [reCamera Pro setup](recamera-pro/README.md)
+- [Meshtastic node setup](meshtastic-node/README.md)
 
-This first pass documents the integration point. The code package can be copied in after the public example wording is approved.
+## Security Notes
 
-## Configuration Shape
-
-```ini
-GPIO=188
-TARGET_CLASSES=cat
-MIN_SCORE=0.10
-PULSE_SECONDS=3
-COOLDOWN_SECONDS=60
-SAVE_SNAPSHOT=1
-SNAPSHOT_TARGET_KB=500
-SNAPSHOT_MAX_FILES=1000
-SNAPSHOT_DELETE_BATCH=100
-```
-
-During development, `person` can be included as a test class. For a public wildlife demo, keep the target class and model limitations explicit.
-
-## Integration Boundary
-
-The reCamera Pro should only decide whether a trigger event happened. The Meshtastic node should handle radio-specific behavior:
-
-- message text;
-- destination channel;
-- retransmission policy;
-- receiver display behavior;
-- battery-specific sleep strategy.
-
-This boundary keeps the workflow reusable across different field radios and receiver devices.
+- Do not commit SSH passwords, API tokens, Meshtastic channel keys, or private GPS locations.
+- Redact Meshtastic pre-shared keys from screenshots before publishing.
+- Do not publish sensitive wildlife locations or unreviewed human images.
 

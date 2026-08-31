@@ -1,0 +1,52 @@
+#!/bin/sh
+
+NAME=recamera_runtime_logger
+SCRIPT=/userdata/recamera_runtime_logger.py
+CONFIG=/userdata/recamera_runtime_logger.conf
+LOGFILE=/userdata/recamera_runtime_logger.log
+PIDFILE=/var/run/recamera_runtime_logger.pid
+
+start_service() {
+    if [ -f "$PIDFILE" ] && kill -0 "$(cat "$PIDFILE")" 2>/dev/null; then
+        echo "$NAME already running"
+        exit 0
+    fi
+    RECAMERA_RUNTIME_LOGGER_CONFIG="$CONFIG" nohup python3 -u "$SCRIPT" >> "$LOGFILE" 2>&1 &
+    echo $! > "$PIDFILE"
+    echo "$NAME started, pid=$(cat "$PIDFILE")"
+}
+
+stop_service() {
+    if [ -f "$PIDFILE" ]; then
+        kill "$(cat "$PIDFILE")" 2>/dev/null || true
+        rm -f "$PIDFILE"
+    fi
+    echo "$NAME stopped"
+}
+
+case "$1" in
+    start)
+        start_service
+        ;;
+    stop)
+        stop_service
+        ;;
+    restart|reload)
+        stop_service
+        start_service
+        ;;
+    status)
+        if [ -f "$PIDFILE" ] && kill -0 "$(cat "$PIDFILE")" 2>/dev/null; then
+            echo "$NAME running, pid=$(cat "$PIDFILE")"
+        else
+            echo "$NAME stopped"
+            exit 1
+        fi
+        ;;
+    *)
+        echo "Usage: $0 {start|stop|restart|status}"
+        exit 1
+        ;;
+esac
+
+exit 0
