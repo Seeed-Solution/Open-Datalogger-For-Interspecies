@@ -73,7 +73,7 @@ See [System Architecture](docs/system-architecture.md) for the intended structur
 ## How to Contribute
 
 - Bring a real research question or field deployment problem.
-- Propose a project using the project template.
+- Propose a project using the [project template](https://github.com/Seeed-Solution/Open-Datalogger-For-Interspecies/tree/main/projects/project-template).
 - Improve research theme documentation with domain knowledge.
 - Contribute datasets only when permissions, sensitivity, and species risk have been reviewed.
 - Add reference implementations once a pattern has been used in a real project.
